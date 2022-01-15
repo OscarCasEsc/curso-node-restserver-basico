@@ -14,7 +14,6 @@ const validarJWT = async(req, res= response, next) => {
        const {uid} = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
        // leer usuario que corresponde al uid
       const usuario = await Usuario.findById(uid);
-      console.log('estado',usuario);
       // Verificar si el uid tiene estado true
       if(!usuario){
           return res.status(401).json({
